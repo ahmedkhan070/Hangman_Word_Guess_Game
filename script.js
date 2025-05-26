@@ -87,8 +87,12 @@ function guessLetter() {
   }
 
   if (guessedLetters.includes(letter)) {
-    message.innerText = `You already guessed "${letter}".`;
-    return;
+    if (display.includes(letter)) {
+      // Letter is already visible, let the player guess it again silently
+    } else {
+      message.innerText = `You already guessed "${letter}".`;
+      return;
+    }
   }
 
   guessedLetters.push(letter);
