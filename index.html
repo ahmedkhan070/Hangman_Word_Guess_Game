@@ -1,26 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hangman Game</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hangman Duel: User vs Computer</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Hangman Game</h1>
-    <canvas id="hangmanCanvas" width="300" height="250"></canvas>
-    <p id="wordDisplay"></p>
 
-    <div class="input-group">
-      <input type="text" id="letterInput" maxlength="1" placeholder="Enter a letter" autofocus />
-      <button onclick="guessLetter()">Guess</button>
-    </div>
+<h1>Hangman Duel: User vs Computer</h1>
 
-    <p id="message"></p>
-    <button id="restartButton" onclick="restartGame()">Restart</button>
+<div id="setupScreen">
+  <label for="userWordInput">Enter a word for the computer to guess:</label>
+  <input id="userWordInput" type="text" maxlength="15" autocomplete="off" />
+  <button id="startButton">Start Game</button>
+  <p id="setupMessage" class="message"></p>
+</div>
+
+<div id="gameScreen" style="display:none;">
+  <div class="playerSection">
+    <h2>Your Guess:</h2>
+    <p>Guess the computer's word:</p>
+    <div id="computerWordDisplay" class="wordDisplay"></div>
+    <canvas id="userHangmanCanvas" width="200" height="250"></canvas>
+    <p id="userMessage" class="message"></p>
   </div>
 
-  <script src="script.js"></script>
+  <div class="playerSection">
+    <h2>Computer Guesses:</h2>
+    <p>Computer is guessing your word:</p>
+    <div id="userWordDisplay" class="wordDisplay"></div>
+    <canvas id="computerHangmanCanvas" width="200" height="250"></canvas>
+    <p id="computerMessage" class="message"></p>
+  </div>
+
+  <div id="guessSection">
+    <p><b>Your Turn to Guess:</b></p>
+    <input id="letterInput" maxlength="1" autocomplete="off" />
+    <button id="guessButton">Guess</button>
+  </div>
+
+  <button id="restartButton" style="display:none;">Restart</button>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
