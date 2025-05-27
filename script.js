@@ -268,121 +268,51 @@ function drawHangmanPart(ctx, step) {
       ctx.beginPath();
       ctx.moveTo(10, 230);
       ctx.lineTo(190, 230);
-      ctx.stroke();
-      break;
-    case 2:
-      // Pole
-      ctx.beginPath();
       ctx.moveTo(50, 230);
       ctx.lineTo(50, 20);
       ctx.stroke();
       break;
-    case 3:
+    case 2:
       // Beam
       ctx.beginPath();
       ctx.moveTo(50, 20);
       ctx.lineTo(140, 20);
-      ctx.stroke();
-      break;
-    case 4:
-      // Rope
-      ctx.beginPath();
       ctx.moveTo(140, 20);
       ctx.lineTo(140, 50);
       ctx.stroke();
       break;
-    case 5:
+    case 3:
       // Head (circle)
       ctx.beginPath();
       ctx.arc(140, 75, 25, 0, Math.PI * 2);
       ctx.stroke();
       break;
-    case 6:
+    case 4:
       // Body
       ctx.beginPath();
       ctx.moveTo(140, 100);
       ctx.lineTo(140, 160);
       ctx.stroke();
       break;
-    case 7:
-      // Left Arm
+    case 5:
+      // Arms
       ctx.beginPath();
       ctx.moveTo(140, 110);
       ctx.lineTo(100, 140);
-      ctx.stroke();
-      break;
-    case 8:
-      // Right Arm
-      ctx.beginPath();
       ctx.moveTo(140, 110);
       ctx.lineTo(180, 140);
       ctx.stroke();
       break;
-    case 9:
-      // Left Leg
+    case 6:
+      // Legs
       ctx.beginPath();
       ctx.moveTo(140, 160);
       ctx.lineTo(110, 200);
-      ctx.stroke();
-      break;
-    case 10:
-      // Right Leg
-      ctx.beginPath();
       ctx.moveTo(140, 160);
       ctx.lineTo(170, 200);
       ctx.stroke();
       break;
     default:
-      break;
-  }
-}
-
-// Because maxWrong is 6, draw only steps 1 to 6
-function drawHangmanPart(ctx, step) {
-  ctx.lineWidth = 5;
-  ctx.strokeStyle = "#222";
-
-  switch (step) {
-    case 1:
-      // Base
-      ctx.beginPath();
-      ctx.moveTo(10, 230);
-      ctx.lineTo(190, 230);
-      ctx.stroke();
-      break;
-    case 2:
-      // Pole
-      ctx.beginPath();
-      ctx.moveTo(50, 230);
-      ctx.lineTo(50, 20);
-      ctx.stroke();
-      break;
-    case 3:
-      // Beam
-      ctx.beginPath();
-      ctx.moveTo(50, 20);
-      ctx.lineTo(140, 20);
-      ctx.stroke();
-      break;
-    case 4:
-      // Rope
-      ctx.beginPath();
-      ctx.moveTo(140, 20);
-      ctx.lineTo(140, 50);
-      ctx.stroke();
-      break;
-    case 5:
-      // Head (circle)
-      ctx.beginPath();
-      ctx.arc(140, 75, 25, 0, Math.PI * 2);
-      ctx.stroke();
-      break;
-    case 6:
-      // Body
-      ctx.beginPath();
-      ctx.moveTo(140, 100);
-      ctx.lineTo(140, 160);
-      ctx.stroke();
       break;
   }
 }
