@@ -62,10 +62,6 @@ function startGame() {
   // Pick random word for computer
   computerWord = computerWords[Math.floor(Math.random() * computerWords.length)];
 
-  // Initialize displays with underscores
-  userDisplay = Array(userWord.length).fill("_");
-  computerDisplay = Array(computerWord.length).fill("_");
-
   // Clear guesses and counters
   userGuessedLetters = [];
   computerGuessedLetters = [];
@@ -75,7 +71,7 @@ function startGame() {
   // Reset messages
   userMessage.innerText = "";
   computerMessage.innerText = "";
-  
+
   // Clear canvases
   clearCanvas(userCtx);
   clearCanvas(computerCtx);
@@ -83,6 +79,10 @@ function startGame() {
   // Show game screen, hide setup
   setupScreen.style.display = "none";
   gameScreen.style.display = "block";
+
+  // Initialize displays with partial reveal
+  userDisplay = initializePartialDisplay(userWord);
+  computerDisplay = initializePartialDisplay(computerWord);
 
   updateDisplays();
 
@@ -96,6 +96,28 @@ function startGame() {
 
   userMessage.innerText = "Your turn to guess a letter!";
   computerMessage.innerText = "Computer is waiting...";
+}
+
+function initializePartialDisplay(word) {
+  const length = word.length;
+  let display = Array(length).fill("_");
+
+  // Choose one of three partial reveal patterns
+  const midIndex = Math.floor(length / 2);
+  const option = Math.floor(Math.random() * 3); // 0, 1, 2
+
+  if (option === 0) {
+    display[0] = word[0];
+    display[length - 1] = word[length - 1];
+  } else if (option === 1) {
+    display[0] = word[0];
+    display[midIndex] = word[midIndex];
+  } else {
+    display[midIndex] = word[midIndex];
+    display[length - 1] = word[length - 1];
+  }
+
+  return display;
 }
 
 // ======= Game flow =======
