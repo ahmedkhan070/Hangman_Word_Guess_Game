@@ -1,49 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Hangman Duel: User vs Computer</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hangman Duel: User vs Computer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <div class="game-title">
+      <div class="game-icon">🎮</div>
+      <h1>Hangman Duel: User vs Computer</h1>
+      <div class="game-icon">🤖</div>
+    </div>
 
-<h1>Hangman Duel: User vs Computer</h1>
+    <section id="setupScreen" class="card">
+      <h2>Game Setup</h2>
+      <div class="form-group">
+        <label for="userWordInput">Enter a word for the computer to guess (3-15 letters):</label>
+        <input id="userWordInput" type="text" maxlength="15" autocomplete="off" />
+      </div>
+      <button id="startButton" class="btn primary">Start Game</button>
+      <p id="setupMessage" class="message"></p>
+    </section>
 
-<div id="setupScreen">
-  <label for="userWordInput">Enter a word for the computer to guess:</label>
-  <input id="userWordInput" type="text" maxlength="15" autocomplete="off" />
-  <button id="startButton">Start Game</button>
-  <p id="setupMessage" class="message"></p>
-</div>
+    <section id="gameScreen" class="hidden">
+      <div class="game-board-wrapper">
+        <div class="game-board with-comments">
+          <div id="userCard" class="player-card">
+            <h2><span class="player-icon">👤</span> Your Guess</h2>
+            <p>Guess the computer's word:</p>
+            <div id="computerWordDisplay" class="word-display"></div>
+            <div class="hangman-title">
+              <span>Hangman Progress</span>
+              <span>Wrong: <span id="userWrongCount" class="wrong-count">0/6</span></span>
+            </div>
+            <div class="hangman-container">
+              <canvas id="userHangmanCanvas" width="200" height="250"></canvas>
+            </div>
+            <p id="userMessage" class="message">Your turn to guess a letter!</p>
+            <div class="guessed-letters">
+              <span>Guessed Letters:</span>
+              <span id="userGuessedLetters"></span>
+            </div>
+          </div>
 
-<div id="gameScreen" style="display:none;">
-  <div class="playerSection">
-    <h2>Your Guess:</h2>
-    <p>Guess the computer's word:</p>
-    <div id="computerWordDisplay" class="wordDisplay"></div>
-    <canvas id="userHangmanCanvas" width="200" height="250"></canvas>
-    <p id="userMessage" class="message"></p>
+          <div id="computerCard" class="player-card">
+            <h2><span class="player-icon">🤖</span> Computer Guesses</h2>
+            <p>Computer is guessing your word:</p>
+            <div id="userWordDisplay" class="word-display"></div>
+            <div class="hangman-title">
+              <span>Hangman Progress</span>
+              <span>Wrong: <span id="computerWrongCount" class="wrong-count">0/6</span></span>
+            </div>
+            <div class="hangman-container">
+              <canvas id="computerHangmanCanvas" width="200" height="250"></canvas>
+            </div>
+            <p id="computerMessage" class="message">Computer is waiting...</p>
+            <div class="guessed-letters">
+              <span>Guessed Letters:</span>
+              <span id="computerGuessedLetters"></span>
+            </div>
+          </div>
+
+          <div class="computer-comments">
+            <h3>Computer's Thoughts</h3>
+            <div id="commentsContainer"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="guessSection" class="input-group sticky-bottom">
+        <p class="turn-indicator">Your Turn to Guess</p>
+        <div class="input-row">
+          <input id="letterInput" maxlength="1" autocomplete="off" placeholder="A-Z" />
+          <button id="guessButton" class="btn primary">Guess</button>
+        </div>
+      </div>
+
+      <button id="restartButton" class="btn secondary hidden">New Game</button>
+    </section>
   </div>
 
-  <div class="playerSection">
-    <h2>Computer Guesses:</h2>
-    <p>Computer is guessing your word:</p>
-    <div id="userWordDisplay" class="wordDisplay"></div>
-    <canvas id="computerHangmanCanvas" width="200" height="250"></canvas>
-    <p id="computerMessage" class="message"></p>
-  </div>
-
-  <div id="guessSection">
-    <p><b>Your Turn to Guess:</b></p>
-    <input id="letterInput" maxlength="1" autocomplete="off" />
-    <button id="guessButton">Guess</button>
-  </div>
-
-  <button id="restartButton" style="display:none;">Restart</button>
-</div>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
