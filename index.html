@@ -27,6 +27,10 @@
     <section id="gameScreen" class="hidden">
       <div class="game-board-wrapper">
         <div class="game-board with-comments">
+          <div class="computer-comments">
+            <h3>Computer's Thoughts</h3>
+            <div id="commentsContainer"></div>
+          </div>
           <div id="userCard" class="player-card">
             <h2><span class="player-icon">👤</span> Your Guess</h2>
             <p>Guess the computer's word:</p>
@@ -61,11 +65,6 @@
               <span>Guessed Letters:</span>
               <span id="computerGuessedLetters"></span>
             </div>
-          </div>
-
-          <div class="computer-comments">
-            <h3>Computer's Thoughts</h3>
-            <div id="commentsContainer"></div>
           </div>
         </div>
       </div>
