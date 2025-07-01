@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       1: [
         "Hmm, interesting choice...",
         "You're playing coy, I see.",
-        "That letter should’ve worked... maybe."
+        "That letter should've worked... maybe."
       ],
       2: [
         "I see what you're doing.",
@@ -62,19 +62,19 @@ document.addEventListener('DOMContentLoaded', () => {
         "Something feels off here..."
       ],
       3: [
-        "Okay, that didn’t work. Let me think.",
-        "I’m starting to doubt my algorithm.",
+        "Okay, that didn't work. Let me think.",
+        "I'm starting to doubt my algorithm.",
         "Not my finest moment..."
       ],
       4: [
         "This is getting frustrating!",
-        "You think you’re clever, huh?",
+        "You think you're clever, huh?",
         "Do you even know what you're doing?!"
       ],
       5: [
         "Why are you making this so difficult?!",
         "You're really testing my patience...",
-        "One of us is going to snap, and it won’t be me. 😡"
+        "One of us is going to snap, and it won't be me. 😡"
       ],
       6: [
         "I CAN'T BELIEVE I'M LOSING TO A HUMAN!!!",
@@ -282,24 +282,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Add computer comment
-function addComputerComment(forcedText = null) {
-  const level = Math.min(Math.floor(state.computerWrongCount / 2), 6);
-  const pool = state.computerComments[level];
-  const text = forcedText || pool[Math.floor(Math.random() * pool.length)];
+  function addComputerComment(forcedText = null) {
+    const level = Math.min(Math.floor(state.computerWrongCount / 2), 6);
+    const pool = state.computerComments[level];
+    const text = forcedText || pool[Math.floor(Math.random() * pool.length)];
 
-  const emojis = ["...", "😅", "🤔", "😬", "😳", "💢", "🔥"];
-  const moods = ["🤖", "😐", "😏", "😠", "😤", "😵", "😡"];
-  const mood = moods[Math.min(state.computerWrongCount, moods.length - 1)];
-  const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+    const emojis = ["...", "😅", "🤔", "😬", "😳", "💢", "🔥"];
+    const moods = ["🤖", "😐", "😏", "😠", "😤", "😵", "😡"];
+    const mood = moods[Math.min(state.computerWrongCount, moods.length - 1)];
+    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 
-  const commentEl = document.createElement('div');
-  commentEl.className = 'comment computer';
-  commentEl.innerHTML = `
-    <div class="comment-header">${mood} Computer:</div>
-    <div>${text} ${emoji}</div>
-  `;
-  elements.commentsContainer.prepend(commentEl);
-}
+    const commentEl = document.createElement('div');
+    commentEl.className = 'comment computer';
+    commentEl.innerHTML = `
+      <div class="comment-header">${mood} Computer:</div>
+      <div>${text} ${emoji}</div>
+    `;
+    elements.commentsContainer.prepend(commentEl);
+  }
 
   // Get computer guess
   function getComputerGuess() {
@@ -417,15 +417,15 @@ function addComputerComment(forcedText = null) {
         elements.computerMessage.textContent = "Computer lost! You won!";
         addComputerComment("How did you guess it?! I demand a rematch!");
     } else if (computerWon) {
-        elements.computerMessage.textContent = `､�Computer guessed your word ("${state.userWord.toUpperCase()}")! Computer wins!`;
+        elements.computerMessage.textContent = `Computer guessed your word ("${state.userWord.toUpperCase()}")! Computer wins!`;
         elements.userMessage.textContent = "You lost! Computer won!";
         addComputerComment("I knew it! Humans are no match for my algorithms!");
     } else if (userLostOnHangman) {
-        elements.userMessage.textContent = `逐 You lost! The word was "${state.computerWord.toUpperCase()}".`;
+        elements.userMessage.textContent = `You lost! The word was "${state.computerWord.toUpperCase()}".`;
         elements.computerMessage.textContent = "Computer wins!";
         addComputerComment("HAHA! Better luck next time, human!");
     } else if (computerLostOnHangman) {
-        elements.computerMessage.textContent = `逐 Computer lost! Your word was "${state.userWord.toUpperCase()}".`;
+        elements.computerMessage.textContent = `Computer lost! Your word was "${state.userWord.toUpperCase()}".`;
         elements.userMessage.textContent = "You win!";
         addComputerComment("NOOOOO! This can't be happening! I demand a rematch!");
     }
